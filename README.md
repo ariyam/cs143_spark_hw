@@ -80,6 +80,19 @@ There are some potentially confusing differences between the terminology we use 
 * Don't confuse the [Scala interface `Iterator`](http://www.scala-lang.org/api/current/index.html#scala.collection.Iterator) with the iterator concept that we covered in lecture. The `Iterator` that you will be using in this project is a Scala language feature that you will use to implement your SparkSQL nodes.  `Iterator` provides an interface to Scala collections that enforces a specific API: the `next` and `hasNext` functions. 
 
 # Setup
+
+
+## `git` and GitHub
+
+`git` is a *version control* system, helping you track different versions of your code, synchronize them across different machines, and collaborate with others. [GitHub](https://github.com) is a site which supports this system, hosting it as a service.
+
+If you don't know much about `git`, we *strongly recommend* you to familiarize yourself with this system; you'll be spending a lot of time with it!
+There are many guides to using `git` online - [here](http://git-scm.com/book/en/v1/Getting-Started) is a great one to read. 
+
+
+## Setting up the virtual machine (optional)
+
+
 To get started with the VM:
 
 1. [Download and Install VirtualBox](https://www.virtualbox.org/wiki/Downloads) for your computer.  Current version is 5.0.6.
@@ -112,34 +125,42 @@ When you're done working you'll want to log out of the VM and shut it down:
 
 Next time you want to fire it up, just cd back to the cs186 directory you created and type `vagrant up` to reboot it.
 
-## Pulling the framework
+## Setting up your repository and pulling the framework
 
-### Ensuring you have the correct remotes
+You should first set up a remote **private** repository (e.g., spark-homework).
 
-In your VM, please first clone your individual or group repo.
+    $ cd ~
 
-<pre><code>git clone https://github.com/berkeley-cs186/xx.git
-</code></pre>
+Clone your personal repository. It should be empty.
 
-where `xx` will be your individual/group repo name.
+    $ git clone "https://github.com/xx/yy.git"
 
-Next, please ensure that you have the correct remotes. Your individual/group repo might be called `origin` or `group` or something.
-<pre><code>$ git remote -v
-origin	https://github.com/berkeley-cs186/xx (fetch)
-origin	https://github.com/berkeley-cs186/xx (push)
-course	https://github.com/berkeley-cs186/course (fetch)
-course	https://github.com/berkeley-cs186/course (push)
-</code></pre>
+Enter the cloned repository, track the course repository and clone it.
 
-If you do not have a remote that points to `git@github.com:berkeley-cs186/course.git` (if you're using SSH keys) or `https://github.com/berkeley-cs186/course.git` (if you enter your login and password), then please run `git remote add course ...` (replace the '...' with the correct form depending on how you use Github).
+    $ cd yy/
+    $ git remote add course "https://github.com/UCLA-BDL/spark-homework.git"
+    $ git pull course master
 
-### Fetching the code
+NOTE: Please do not be overwhelmed by the amount of code that is here. Spark is a big project with a lot of features. The code that we will be touching will be contained within one specific directory: sql/core/src/main/scala/org/apache/spark/sql/execution/. The tests will all be contained in sql/core/src/test/scala/org/apache/spark/sql/execution/
 
-<pre><code>$ git pull course master</code></pre> 
+Push clone to your personal repository.
 
-NOTE: Please do not be overwhelmed by the amount of code that is here. Spark is a big project with a lot of features. The code that we will be touching will be contained within one specific directory: `sql/core/src/main/scala/org/apache/spark/sql/execution/`. (Yes, we know -- it's a mouthful). The tests will all be contained in `sql/core/src/test/scala/org/apache/spark/sql/execution/`.
+    $ git push origin master
+    
+Every time that you add some code, you can commit the modifications to the remote repository.
 
-### Synced Folders in Vagrant
+    $ git commit -m 'update to homework'
+    $ git push origin master
+
+
+### Receiving assignment updates
+
+It may be necessary to receive updates to our assignment (even though we try to release them as "perfectly" as possible the first time). Assuming you set up the tracking correctly, you can simply run this following command to receive assignment updates:
+
+    $ git pull course master
+
+
+### Synced Folders in Vagrant (optional)
 
 If you want to code on your local machine and then run your code in the VM without any `git push, git pull, etc.` hassle, vagrant has the capability of syncing local files to the guest machine!
 
