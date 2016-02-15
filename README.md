@@ -2,8 +2,9 @@
 
 In this assignment you'll implement UDF (user-defined function) result caching in [Apache Spark](http://spark.apache.org), which is a framework for distributed computing in the mold of MapReduce. This project will illustrate key concepts in data rendezvous and query evaluation, and you'll get some hands-on experience modifying Spark, which is widely used in the field. In addition, you'll get exposure to Scala, a JVM-based language that is gaining popularity for its clean functional style.
 
-This assignment is due **Monday, October 19th at 11:59 PM** and is worth **10% of your final grade**. This project is an excellent opportunity to collaborate, and if you want to complete it **in pairs** and haven't filled out the CS186 Partner Google Form yet, ***Please fill out [this form](http://goo.gl/forms/P0OLVPg4La) by October 12th, at 11:59pm***.
+The assignment due date is published at the [class website](https://sites.google.com/site/cs143databasesystems/).
 
+You want to complete this **in pairs**, if you choose to. 
 Lastly, there is a lot of code in this directory. Please look [here](https://github.com/berkeley-cs186/course/tree/master/hw3#fetching-the-code) here to find the directory where the code is located.
 
 ## Assignment tasks
@@ -67,7 +68,7 @@ If you're interested in the topic, the following paper will be an interesting re
 
 All the code you will be touching will be in three files -- `CS186Utils.scala`, `basicOperators.scala`, and `DiskHashedRelation.scala`. You might however need to consult other files within Spark or the general Scala APIs in order to complete the assignment thoroughly. Please make sure you look through *all* the provided code in the three files mentioned above before beginning to write your own code. There are a lot of useful functions in `CS186Utils.scala` as well as in `DiskHashedRelation.scala` that will save you a lot of time and cursing -- take advantage of them!
 
-In general, we have defined most (if not all) of the methods that you will need. In that way, this is very much like a 61A project -- you just need to find the `// IMPLEMENT ME` comments and fill in the code. Correspondingly, the amount of code you will write is not very high -- the total staff solution is less than a 100 lines of code (not including tests). However, stringing together the right components in a memory-efficient way (i.e., not reading the whole relation into memory at once) will require some thought and careful planning.
+In general, we have defined most (if not all) of the methods that you will need. As before, in this project, you need to fill in the skeleton. The amount of code you will write is not very high -- the total staff solution is less than a 100 lines of code (not including tests). However, stringing together the right components in a memory-efficient way (i.e., not reading the whole relation into memory at once) will require some thought and careful planning.
 
 ## Some Terminology Differences
 
@@ -90,44 +91,9 @@ If you don't know much about `git`, we *strongly recommend* you to familiarize y
 There are many guides to using `git` online - [here](http://git-scm.com/book/en/v1/Getting-Started) is a great one to read. 
 
 
-## Setting up the virtual machine (optional)
-
-
-To get started with the VM:
-
-1. [Download and Install VirtualBox](https://www.virtualbox.org/wiki/Downloads) for your computer.  Current version is 5.0.6.
-2. [Download and Install vagrant](https://www.vagrantup.com/downloads).  Current version is 1.7.4.
-
-Now open a terminal on your machine, create a cs186 directory to work in, and build your VM with vagrant. This will download a large VM image from the cloud (more specifically, the VM image from last semester's iteration of CS 186!); make sure you've got some decent bandwidth.
-
-    % mkdir cs186
-    % cd cs186
-    % vagrant init cs186-spring15/cs186spring15 // Not a typo!
-    % vagrant up
-
-If all goes well, your VM should now be up and running.  You can ssh into it as follows:
-
-    % vagrant ssh
-
-This is almost everything you need to know about vagrant, but you may want to [reference the vagrant docs](https://docs.vagrantup.com/v2/) occasionally.
-
-Once you're logged into your VM, you should check out the git repository for the course within the VM:
-
-    vagrant@precise64:~$ cd
-    vagrant@precise64:~$ git clone https://github.com/berkeley-cs186/course.git
-    
-When you're done working you'll want to log out of the VM and shut it down:
-
-    vagrant@precise64:~$ exit
-    logout
-    Connection to 127.0.0.1 closed.
-    % vagrant halt
-
-Next time you want to fire it up, just cd back to the cs186 directory you created and type `vagrant up` to reboot it.
-
 ## Setting up your repository and pulling the framework
 
-You should first set up a remote **private** repository (e.g., spark-homework).
+You should first set up a remote **private** repository (e.g., spark-homework). Github gives private repository to students (but this may take some time). 
 
     $ cd ~
 
@@ -160,23 +126,7 @@ It may be necessary to receive updates to our assignment (even though we try to 
     $ git pull course master
 
 
-### Synced Folders in Vagrant (optional)
-
-If you want to code on your local machine and then run your code in the VM without any `git push, git pull, etc.` hassle, vagrant has the capability of syncing local files to the guest machine!
-
-Taken from Vagrant's website: "Synced folders enable Vagrant to sync a folder on the host machine to the guest machine, allowing you to continue working on your project's files on your host machine, but use the resources in the guest machine to compile or run your project. By default, Vagrant will share your project directory (the directory with the Vagrantfile) to /vagrant."
-
-What this means is that all files that you move into the directory you set up vagrant in will appear in the `/vagrant` folder when you `vagrant ssh` into your VM. Here's what you can do to update code in your VM.
-
-1. Move your wanted project and files into the directory that you set up vagrant in.
-2. `vagrant ssh` into your VM and type `cd /vagrant` (type `ls` to make sure your folders are synced into the VM).
-3. `cd` into your hw3 files and run a `make` command.
-
-Voila! Hopefully it worked out! :)
-
 ## Building Spark
-
-**Note:** Your VM might ask you to do this when you try to run `make`: `sudo apt-get install make`. Make sure you do it!
 
 Once you have the pulled the code, `cd` into `{repo root}/hw3` and run `make compile`. The first time you run this command, it should take a while -- `sbt` will download all the dependencies and compile all the code in Spark (there's quite a bit of code). Once the initial assembly commands finish, you can start your project! (Future builds should not take this long -- `sbt` is smart enough to only recompile the changed files, unless you run `make clean`, which will remove all compiled class files.)
 
