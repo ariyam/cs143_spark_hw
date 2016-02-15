@@ -93,7 +93,7 @@ There are many guides to using `git` online - [here](http://git-scm.com/book/en/
 
 ## Setting up your repository and pulling the framework
 
-You should first set up a remote **private** repository (e.g., spark-homework). Github gives private repository to students (but this may take some time). 
+You should first set up a remote **private** repository (e.g., spark-homework). Github gives private repository to students (but this may take some time). If you don't have a private repository, think TWICE about checking it in public repository, as it will be available for others to checheckout.
 
     $ cd ~
 
@@ -187,18 +187,9 @@ We have provided you some sample tests in `DiskPartitionSuite.scala`, `DiskHased
 
 In order to run our tests, we have provided a simple Makefile. In order to run the tests for task 1, run `make t1`. Correspondingly for task, run `make t2`, and the same for all other tests. `make all` will run all the tests. 
 
-### Assignment autograder
-
-We will provide an autograder on this assignment. To run the autograder on your assignment, you must push to your submission branch: `release/hw3` (this ensures that you're submitting the assignment correctly in addition to getting an autograder email).
-
-    $ git checkout -b release/hw3
-    $ git push origin release/hw3
-
-Our machines will e-mail you the results of the autograder within an hour. If you do not receive a response after an hour, please *first* double-check that all your files are in the right place and that you pushed a commit to your release branch, and *then* notify us that you haven't received a response. **Note that these tests are the same as the ones we've provided for you and are not comprehensive!**
-
 ### Assignment submission
 
-To submit your assignment, as before, push a branch containing the commit you want us to grade to `release/hw3`. **Finally, remember that copying all or part of another person's work, or using reference material not specifically allowed, are forms of cheating and will not be tolerated.**
+Submission link will be created on CCLE, where you can submit your code by the due date.
 
 ### Credits and Acknowledgements
 Special thanks to Vikram Sreekanti!
