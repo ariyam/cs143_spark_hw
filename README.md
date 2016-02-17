@@ -104,7 +104,7 @@ Clone your personal repository. It should be empty.
 Enter the cloned repository, track the course repository and clone it.
 
     $ cd yy/
-    $ git remote add course "https://github.com/UCLA-BDL/spark-homework.git"
+    $ git remote add course "https://github.com/ariyam/cs143_spark_hw.git"
     $ git pull course master
 
 NOTE: Please do not be overwhelmed by the amount of code that is here. Spark is a big project with a lot of features. The code that we will be touching will be contained within one specific directory: sql/core/src/main/scala/org/apache/spark/sql/execution/. The tests will all be contained in sql/core/src/test/scala/org/apache/spark/sql/execution/
