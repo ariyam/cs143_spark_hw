@@ -5,13 +5,13 @@ In this assignment you'll implement UDF (user-defined function) result caching i
 The assignment due date is published at the [class website](https://sites.google.com/site/cs143databasesystems/).
 
 You can complete this **in pairs**, if you choose to. 
-Lastly, there is a lot of code in this directory. Please look [here]((https://github.com/ariyam/w16-cs143/tree/master/spark-homework/sql) here to find the directory where the code is located.
+Lastly, there is a lot of code in this directory. Please look [here](https://github.com/ariyam/w16-cs143/tree/master/spark-homework/sql) here to find the directory where the code is located.
 
 ## Assignment Goals
 
-1. ** Implement disk hash-partitioning **
-2. ** Implement in-memory UDF caching **
-3. ** Implement hash-partitioned UDF caching **
+1. *Implement disk hash-partitioning*
+2. *Implement in-memory UDF caching*
+3. *Implement hash-partitioned UDF caching*
 
 # Spark
 
