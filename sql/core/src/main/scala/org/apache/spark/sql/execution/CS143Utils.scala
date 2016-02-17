@@ -5,7 +5,7 @@ import java.util.{ArrayList => JavaArrayList, HashMap => JavaHashMap}
 
 import org.apache.spark.sql.catalyst.expressions._
 
-object CS186Utils {
+object CS143Utils {
 
   /**
    * Returns a Scala array that contains the bytes representing a Java ArrayList.
@@ -126,14 +126,14 @@ object CS186Utils {
                                 expressions: Seq[Expression],
                                 inputSchema: Seq[Attribute]): (Iterator[Row] => Iterator[Row]) = {
     // Get the UDF from the expressions.
-    val udf: ScalaUdf = CS186Utils.getUdfFromExpressions(expressions)
+    val udf: ScalaUdf = CS143Utils.getUdfFromExpressions(expressions)
 
     udf match {
       /* If there is no UDF, then do a regular projection operation. Note that this is very similar to Project in
          basicOperators.scala */
       case null => {
         { input =>
-          val projection = CS186Utils.getNewProjection(expressions, inputSchema)
+          val projection = CS143Utils.getNewProjection(expressions, inputSchema)
           input.map(projection)
         }
       }
@@ -181,10 +181,10 @@ object CachingIteratorGenerator {
 
     { input =>
       new Iterator[Row] {
-        val udfProject = CS186Utils.getNewProjection(Seq(udf), inputSchema)
-        val cacheKeyProjection = CS186Utils.getNewProjection(udf.children, inputSchema)
-        val preUdfProjection = CS186Utils.getNewProjection(preUdfExpressions, inputSchema)
-        val postUdfProjection = CS186Utils.getNewProjection(postUdfExpressions, inputSchema)
+        val udfProject = CS143Utils.getNewProjection(Seq(udf), inputSchema)
+        val cacheKeyProjection = CS143Utils.getNewProjection(udf.children, inputSchema)
+        val preUdfProjection = CS143Utils.getNewProjection(preUdfExpressions, inputSchema)
+        val postUdfProjection = CS143Utils.getNewProjection(postUdfExpressions, inputSchema)
         val cache: JavaHashMap[Row, Row] = new JavaHashMap[Row, Row]()
 
         def hasNext() = {

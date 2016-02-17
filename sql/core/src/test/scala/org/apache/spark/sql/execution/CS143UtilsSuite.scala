@@ -10,7 +10,7 @@ import scala.util.Random
 
 case class Student(sid: Int, gpa: Float)
 
-class CS186UtilsSuite extends FunSuite {
+class CS143UtilsSuite extends FunSuite {
   val numberGenerator: Random = new Random()
 
   val studentAttributes: Seq[Attribute] =  ScalaReflection.attributesFor[Student]
@@ -42,6 +42,6 @@ class CS186UtilsSuite extends FunSuite {
     val udf: ScalaUdf = new ScalaUdf((i: Int) => i + 1, IntegerType, Seq(studentAttributes(0)))
     val attributes: Seq[Expression] = Seq() ++ studentAttributes ++ Seq(udf)
 
-    assert(CS186Utils.getUdfFromExpressions(attributes) == udf)
+    assert(CS143Utils.getUdfFromExpressions(attributes) == udf)
   }
 }

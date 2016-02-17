@@ -53,7 +53,7 @@ case class Project(projectList: Seq[NamedExpression], child: SparkPlan) extends 
  * NOTE: This assumes that we are only caching for a single UDF. If there are multiple
  * UDFs, it will only cache for the last UDF. All other UDFs will be executed regularly.
  *
- * Once you have completed implementing the functions in [[CS186Utils]], this operator
+ * Once you have completed implementing the functions in [[CS143Utils]], this operator
  * should work.
  */
 @DeveloperApi
@@ -63,10 +63,10 @@ case class CacheProject(projectList: Seq[Expression], child: SparkPlan) extends 
   def execute() = {
     /* Generate the caching iterator. You should trace this code to understand it!
        You have to implement parts of the stack to make this work. */
-    val generator: (Iterator[Row] => Iterator[Row]) = CS186Utils.generateCachingIterator(projectList, child.output)
+    val generator: (Iterator[Row] => Iterator[Row]) = CS143Utils.generateCachingIterator(projectList, child.output)
 
     /* This is Spark magic. In short, it applies the generator function to each of the slices of an RDD.
-       For the purposes of CS 186, we will only ever have one slice. */
+       For the purposes of CS 143, we will only ever have one slice. */
     child.execute().mapPartitions(generator)
   }
 }
@@ -96,7 +96,7 @@ case class PartitionProject(projectList: Seq[Expression], child: SparkPlan) exte
    */
   def generateIterator(input: Iterator[Row]): Iterator[Row] = {
     // This is the key generator for the course-grained external hashing.
-    val keyGenerator = CS186Utils.getNewProjection(projectList, child.output)
+    val keyGenerator = CS143Utils.getNewProjection(projectList, child.output)
 
     // IMPLEMENT ME
 

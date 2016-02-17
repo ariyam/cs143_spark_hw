@@ -6,7 +6,7 @@ import java.util.{ArrayList => JavaArrayList}
 
 import org.apache.spark.SparkException
 import org.apache.spark.sql.catalyst.expressions.{Projection, Row}
-import org.apache.spark.sql.execution.CS186Utils._
+import org.apache.spark.sql.execution.CS143Utils._
 
 import scala.collection.JavaConverters._
 
@@ -73,7 +73,7 @@ private[sql] class DiskPartition (
    * @return the estimated size of the data
    */
   private[this] def measurePartitionSize(): Int = {
-    CS186Utils.getBytesFromList(data).size
+    CS143Utils.getBytesFromList(data).size
   }
 
   /**

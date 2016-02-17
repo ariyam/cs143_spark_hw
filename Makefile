@@ -2,7 +2,7 @@ SBT=build/sbt
 TEST=sql/test:testOnly
 T1=org.apache.spark.sql.execution.DiskPartitionSuite
 T2=org.apache.spark.sql.execution.DiskHashedRelationSuite
-T3=org.apache.spark.sql.execution.CS186UtilsSuite
+T3=org.apache.spark.sql.execution.CS143UtilsSuite
 T4=org.apache.spark.sql.execution.ProjectSuite
 
 compile:
