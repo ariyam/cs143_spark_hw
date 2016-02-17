@@ -4,14 +4,14 @@ In this assignment you'll implement UDF (user-defined function) result caching i
 
 The assignment due date is published at the [class website](https://sites.google.com/site/cs143databasesystems/).
 
-You want to complete this **in pairs**, if you choose to. 
-Lastly, there is a lot of code in this directory. Please look [here](https://github.com/berkeley-cs186/course/tree/master/hw3#fetching-the-code) here to find the directory where the code is located.
+You can complete this **in pairs**, if you choose to. 
+Lastly, there is a lot of code in this directory. Please look [here]((https://github.com/ariyam/w16-cs143/tree/master/spark-homework/sql) here to find the directory where the code is located.
 
-## Assignment tasks
+## Assignment Goals
 
-1. [Implement disk hash-partitioning](https://github.com/berkeley-cs186/course/tree/master/hw3#disk-hash-partitioning)
-2. [Implement in-memory UDF caching](https://github.com/berkeley-cs186/course/tree/master/hw3#in-memory-udf-caching)
-3. [Implement hash-partitioned UDF caching](https://github.com/berkeley-cs186/course/tree/master/hw3#disk-partitioned-udf-caching)
+1. ** Implement disk hash-partitioning **
+2. ** Implement in-memory UDF caching **
+3. ** Implement hash-partitioned UDF caching **
 
 # Spark
 
@@ -126,9 +126,16 @@ It may be necessary to receive updates to our assignment (even though we try to 
     $ git pull course master
 
 
+## Searching files in UNIX
+
+The following UNIX command will come in handy, when you need to find the location of a file. Example- Find location of a file named 'DiskHashedRelation.scala' in my current repository.   
+
+    $ find ./ -name 'DiskHashedRelation.scala' 
+
+
 ## Building Spark
 
-Once you have the pulled the code, `cd` into `{repo root}/hw3` and run `make compile`. The first time you run this command, it should take a while -- `sbt` will download all the dependencies and compile all the code in Spark (there's quite a bit of code). Once the initial assembly commands finish, you can start your project! (Future builds should not take this long -- `sbt` is smart enough to only recompile the changed files, unless you run `make clean`, which will remove all compiled class files.)
+Once you have the pulled the code, `cd` into `{repo root}` and run `make compile`. The first time you run this command, it should take a while -- `sbt` will download all the dependencies and compile all the code in Spark (there's quite a bit of code). Once the initial assembly commands finish, you can start your project! (Future builds should not take this long -- `sbt` is smart enough to only recompile the changed files, unless you run `make clean`, which will remove all compiled class files.)
 
 # Your Task
 
@@ -154,7 +161,7 @@ At this point, you should be passing all the tests in `DiskHashedRelationSuite.s
 
 ## In-Memory UDF Caching
 
-In this section, we will be dealing with `case class CacheProject` in `basicOperators.scala`. You might notice that there are only 4 lines of code in this class and, more importantly, no `// IMPLEMENT ME`s. You don't actually have to write any code here. However, if you trace the function call in [line 66](https://github.com/berkeley-cs186/course/blob/master/hw3/sql/core/src/main/scala/org/apache/spark/sql/execution/basicOperators.scala#L66), you will find that there are two parts of this stack you must implement in order to have a functional in-memory UDF implementation. 
+In this section, we will be dealing with `case class CacheProject` in `basicOperators.scala`. You might notice that there are only 4 lines of code in this class and, more importantly, no `// IMPLEMENT ME`s. You don't actually have to write any code here. However, if you trace the function call in [line 66](https://github.com/ariyam/w16-cs143/blob/master/spark-homework/sql/core/src/main/scala/org/apache/spark/sql/execution/basicOperators.scala#L66), you will find that there are two parts of this stack you must implement in order to have a functional in-memory UDF implementation. 
 
 ### Task #3: Implementing `CS143Utils` methods
 
@@ -191,7 +198,8 @@ In order to run our tests, we have provided a simple Makefile. In order to run t
 
 Submission link will be created on CCLE, where you can submit your code by the due date.
 
-### Credits and Acknowledgements
-Special thanks to Vikram Sreekanti!
+### Acknowledgements
+Big thanks to Matteo Interlandi.
+
 
 **Good luck!**
