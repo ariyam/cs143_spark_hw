@@ -5,7 +5,7 @@ In this assignment you'll implement UDF (user-defined function) result caching i
 The assignment due date is published at the [class website](https://sites.google.com/site/cs143databasesystems/).
 
 You can complete this **in pairs**, if you choose to. 
-Lastly, there is a lot of code in this directory. Please look [here](https://github.com/ariyam/w16-cs143/tree/master/spark-homework/sql) here to find the directory where the code is located.
+Lastly, there is a lot of code in this directory. Please look [here](https://github.com/ariyam/cs143_spark_hw/tree/master/sql) here to find the directory where the code is located.
 
 ## Assignment Goals
 
@@ -161,7 +161,7 @@ At this point, you should be passing all the tests in `DiskHashedRelationSuite.s
 
 ## In-Memory UDF Caching
 
-In this section, we will be dealing with `case class CacheProject` in `basicOperators.scala`. You might notice that there are only 4 lines of code in this class and, more importantly, no `// IMPLEMENT ME`s. You don't actually have to write any code here. However, if you trace the function call in [line 66](https://github.com/ariyam/w16-cs143/blob/master/spark-homework/sql/core/src/main/scala/org/apache/spark/sql/execution/basicOperators.scala#L66), you will find that there are two parts of this stack you must implement in order to have a functional in-memory UDF implementation. 
+In this section, we will be dealing with `case class CacheProject` in `basicOperators.scala`. You might notice that there are only 4 lines of code in this class and, more importantly, no `// IMPLEMENT ME`s. You don't actually have to write any code here. However, if you trace the function call in [line 66](https://github.com/ariyam/cs143_spark_hw/blob/master/sql/core/src/main/scala/org/apache/spark/sql/execution/basicOperators.scala#L66), you will find that there are two parts of this stack you must implement in order to have a functional in-memory UDF implementation. 
 
 ### Task #3: Implementing `CS143Utils` methods
 
