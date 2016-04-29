@@ -2,7 +2,7 @@
 
 In this assignment you'll implement UDF (user-defined function) result caching in [Apache Spark](http://spark.apache.org), which is a framework for distributed computing in the mold of MapReduce. This project will illustrate key concepts in data rendezvous and query evaluation, and you'll get some hands-on experience modifying Spark, which is widely used in the field. In addition, you'll get exposure to Scala, a JVM-based language that is gaining popularity for its clean functional style.
 
-The assignment due date is published at the [class website](https://sites.google.com/site/cs143databasesystems/).
+The assignment due date is published at the [class website](https://ccle.ucla.edu/course/view/16S-COMSCI143-1).
 
 You can complete this **in pairs**, if you choose to. 
 Lastly, there is a lot of code in this directory. Please look [here](https://github.com/ariyam/cs143_spark_hw/tree/master/sql) here to find the directory where the code is located.
