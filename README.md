@@ -4,8 +4,8 @@ In this assignment you'll implement UDF (user-defined function) result caching i
 
 The assignment due date is published at the [class website](https://ccle.ucla.edu/course/view/16S-COMSCI143-1).
 
-You can complete this **in pairs**, if you choose to. 
-Lastly, there is a lot of code in this directory. Please look [here](https://github.com/ariyam/cs143_spark_hw/tree/master/sql) here to find the directory where the code is located.
+Go to course website to check the team formation rules (they are same as the last project).
+Lastly, there is a lot of code in this directory. DO NOT GET OVERWHELMED!! Please look [here](https://github.com/ariyam/cs143_spark_hw/tree/master/sql) here to find the directory where the code is located.
 
 ## Assignment Goals
 
@@ -60,7 +60,7 @@ If the input column(s) to a UDF contain a lot of duplicate values, it can be ben
 1. Implement in-memory UDF caching.
 1. Combine the above two techniques to implement out-of-core UDF caching.
 
-If you're interested in the topic, the following paper will be an interesting read (including additional optimizations beyond what we have time for in this homework):
+If you're interested in the topic, the following paper will be an interesting read.
 
 * [Query Execution Techniques for Caching Expensive Methods (SIGMOD 96)](http://db.cs.berkeley.edu/cs286/papers/caching-sigmod1996.pdf) 
 
@@ -72,13 +72,13 @@ In general, we have defined most (if not all) of the methods that you will need.
 
 ## Some Terminology Differences
 
-There are some potentially confusing differences between the terminology we use in class, and the terminology used in the SparkSQL code base:
+There are some potentially confusing differences between the coomon terminology, and the terminology used in the SparkSQL code base:
 
-* The "iterator" concept we learned in lecture is called a "node" in the SparkSQL code -- there are definitions in the code for UnaryNode and BinaryNode.  A query plan is called a SparkPlan, and in fact UnaryNode and BinaryNode extend SparkPlan (after all, a single iterator is a small query plan!)  You may want to find the file `SparkPlan.scala` in the SparkSQL source to see the API for these nodes.
+* The "iterator" concept we normally use is called a "node" in the SparkSQL code -- there are definitions in the code for UnaryNode and BinaryNode.  A query plan is called a SparkPlan, and in fact UnaryNode and BinaryNode extend SparkPlan (after all, a single iterator is a small query plan!)  You may want to find the file `SparkPlan.scala` in the SparkSQL source to see the API for these nodes.
 
 * In some of the comments in SparkSQL, they also use the term "operator" to mean "node".  The file `basicOperators.scala` defines a number of specific nodes (e.g. Sort, Distinct, etc.).
 
-* Don't confuse the [Scala interface `Iterator`](http://www.scala-lang.org/api/current/index.html#scala.collection.Iterator) with the iterator concept that we covered in lecture. The `Iterator` that you will be using in this project is a Scala language feature that you will use to implement your SparkSQL nodes.  `Iterator` provides an interface to Scala collections that enforces a specific API: the `next` and `hasNext` functions. 
+* Don't confuse the [Scala interface `Iterator`](http://www.scala-lang.org/api/current/index.html#scala.collection.Iterator) with the iterator concept used otherwise. The `Iterator` that you will be using in this project is a Scala language feature that you will use to implement your SparkSQL nodes.  `Iterator` provides an interface to Scala collections that enforces a specific API: the `next` and `hasNext` functions. 
 
 # Setup
 
@@ -182,11 +182,6 @@ This final task requires that you fill in the implementation of `PartitionProjec
 
 At this point, you should be passing ***all*** given tests.
 
-### Thought Exercise 
-
-There is no code you have to write here, but for your own edification, spend some time thinking about the following question:
-
-One of Spark's main selling points is that it is "in-memory". What they mean is the following: When you string a number of Hadoop (or any other MapReduce framework) jobs together, Hadoop will write the results of each phase to disk and read them in again which is very expensive; Spark, on the other hand, maintains its data in memory. However, if our assumption is that if our data doesn't fit in memory, then why does Spark SQL not ship with disk-based implementation of these operators already? In this respect, why is Spark different from the "traditional" parallel relational databases we learn about in class?  There is no right answer to this question! 
 
 ## Testing
 
