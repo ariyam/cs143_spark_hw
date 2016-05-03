@@ -1,17 +1,21 @@
-# Homework: UDF Caching in Spark
+# Project: UDF Caching in Spark
 
-In this assignment you'll implement UDF (user-defined function) result caching in [Apache Spark](http://spark.apache.org), which is a framework for distributed computing in the mold of MapReduce. This project will illustrate key concepts in data rendezvous and query evaluation, and you'll get some hands-on experience modifying Spark, which is widely used in the field. In addition, you'll get exposure to Scala, a JVM-based language that is gaining popularity for its clean functional style.
-
-The assignment due date is published at the [class website](https://ccle.ucla.edu/course/view/16S-COMSCI143-1).
-
-Go to course website to check the team formation rules (they are same as the last project).
-Lastly, there is a lot of code in this directory. DO NOT GET OVERWHELMED!! Please look [here](https://github.com/ariyam/cs143_spark_hw/tree/master/sql) here to find the directory where the code is located.
+In this assignment you'll implement an UDF (user-defined function) result caching in [Apache Spark](http://spark.apache.org). Apache Spark is a leading framework for distributed computing in the mold of Map-Reduce. To complete this project, you will need to develop a user-defined function (UDF) that provides the following functionality in an efficient and reliable manner: Tracking Distinct Values when (i) all the values 
+can fit in memory and (ii) when they do not fit in memory. As you can guess, hashing will be involved. More precisely, you will work in this project to achieve the following goals:
 
 ## Assignment Goals
 
 1. *Implement disk hash-partitioning*
 2. *Implement in-memory UDF caching*
 3. *Implement hash-partitioned UDF caching*
+
+ This project will illustrate key concepts in data rendezvous and query evaluation, and you'll get some hands-on experience modifying Spark, which is widely used in the field. In addition, you'll get exposure to Scala, a JVM-based language that is gaining popularity for its clean functional style.
+
+The assignment due date is published at the [class website](https://ccle.ucla.edu/course/view/16S-COMSCI143-1).
+
+Go to course website to check the team formation rules (they are same as the last project).
+Lastly, there is a lot of code in this directory. DO NOT GET OVERWHELMED!! Please look [here](https://github.com/ariyam/cs143_spark_hw/tree/master/sql) here to find the directory where the code is located.
+
 
 # Spark
 
