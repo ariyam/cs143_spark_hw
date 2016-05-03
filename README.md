@@ -1,7 +1,13 @@
 # Project: UDF Caching in Spark
 
-In this assignment you'll implement an UDF (user-defined function) result caching in [Apache Spark](http://spark.apache.org). Apache Spark is a leading framework for distributed computing in the mold of Map-Reduce. To complete this project, you will need to develop a user-defined function (UDF) that provides the following functionality in an efficient and reliable manner: Tracking Distinct Values when (i) all the values 
-can fit in memory and (ii) when they do not fit in memory. As you can guess, hashing will be involved. More precisely, you will work in this project to achieve the following goals:
+User-defined functions (UDFs) are very important and allow developers to define and exploit custom operations within expressions. Lets look at an example. Imagine, that you have a product catalog that includes photos of the product packaging.  You may want to register a user-defined function `extract_text` that calls an OCR algorithm and returns the text in an image, so that you can get queryable information out of the photos.  You can do this in SQL easily. In SQL, you could imagine a query like this:
+	
+	SELECT P.name, P.manufacturer, P.price, extract_text(P.image), 
+	  FROM Products P;
+	 
+The ability to register UDFs is very powerful -- it extends the ability of your data processing framework. Now the question is, what are the difficulties that one might face when we implement UDFs in distributed environments? For this, lets look at [Apache Spark](http://spark.apache.org). Apache Spark is a leading framework for distributed computing in the mold of Map-Reduce. Spark SQL built on top of Spark is one of its popular components. We will briefly touch upon and learn about Spark during Friday's discussion sections (05/06). As it turns out, you can implement and register UDFs in Spark SQL as well. But UDFs can often introduce performance bottlenecks, especially as we run them over millions of data items. 
+
+In this assignment you'll implement an UDF (user-defined function) result caching in Apache Spark. To complete this project, you will need to develop a user-defined function (UDF) that provides the following functionality in an efficient and reliable manner: Tracking Distinct Values when (i) all the values can fit in memory and (ii) when they do not fit in memory. As you can guess, hashing will be involved. More precisely, you will work in this project to achieve the following goals:
 
 ## Assignment Goals
 
@@ -14,6 +20,8 @@ can fit in memory and (ii) when they do not fit in memory. As you can guess, has
 The assignment due date is published at the [class website](https://ccle.ucla.edu/course/view/16S-COMSCI143-1).
 
 Go to course website to check the team formation rules (they are same as the last project).
+
+
 Lastly, there is a lot of code in this directory. DO NOT GET OVERWHELMED!! Please look [here](https://github.com/ariyam/cs143_spark_hw/tree/master/sql) here to find the directory where the code is located.
 
 
@@ -51,20 +59,17 @@ You might find the following tutorials to be useful:
 
 ## UDFs (**U**ser **D**efined **F**unctions)
 
-User-defined functions allow developers to define and exploit custom operations within expressions.  Imagine, for example, that you have a product catalog that includes photos of the product packaging.  You may want to register a user-defined function `extract_text` that calls an OCR algorithm and returns the text in an image, so that you can get queryable information out of the photos.  In SQL, you could imagine a query like this:
-	
 	SELECT P.name, P.manufacturer, P.price, extract_text(P.image), 
 	  FROM Products P;
 	 
-The ability to register UDFs is very powerful -- it essentially turns your data processing framework into a general distributed computing framework.  But UDFs can often introduce performance bottlenecks, especially as we run them over millions of data items. 
-
+Lets look at the above example, which we used earlier. 
 If the input column(s) to a UDF contain a lot of duplicate values, it can be beneficial to improve performance by ensuring that the UDF is only called once per *distinct input value*, rather than once per *row*.  (For example in our Products example above, all the different configurations of a particular PC might have the same image.) In this assignment, we will implement this optimization.  We'll take it in stages -- first get it working for data that fits in memory, and then later for larger sets that require an out-of-core approach. We will use external hashing as the technique to "rendezvous" all the rows with the same input values for the UDF.
 
 1. Implement disk-based hash partitioning.
 1. Implement in-memory UDF caching.
 1. Combine the above two techniques to implement out-of-core UDF caching.
 
-If you're interested in the topic, the following paper will be an interesting read.
+If you're interested in the topic, the following paper will be an interesting read (optional).
 
 * [Query Execution Techniques for Caching Expensive Methods (SIGMOD 96)](http://db.cs.berkeley.edu/cs286/papers/caching-sigmod1996.pdf) 
 
