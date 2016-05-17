@@ -1,5 +1,6 @@
 # Project: UDF Caching in Spark
 test test
+local work
 
 User-defined functions (UDFs) are very important and allow developers to define and exploit custom operations within expressions. Lets look at an example. Imagine, that you have a product catalog that includes photos of the product packaging.  You may want to register a user-defined function `extract_text` that calls an OCR algorithm and returns the text in an image, so that you can get queryable information out of the photos.  You can do this in SQL easily. In SQL, you could imagine a query like this:
 	
